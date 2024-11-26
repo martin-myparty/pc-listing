@@ -7,7 +7,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center">
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">
+          <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-6 font-roboto">
             Build Your Dream PC
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
