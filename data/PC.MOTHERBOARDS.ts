@@ -1,4 +1,4 @@
-const motherboards = [
+export const motherboards = [
     {
       name: "ASUS ROG Strix B550-F Gaming",
       price: 200,
@@ -6,6 +6,7 @@ const motherboards = [
       integration: "AMD B550",
       socket: "AM4",
       formFactor: "ATX",
+      image:""
     },
     {
       name: "MSI MPG Z490 Gaming Edge WiFi",
@@ -14,6 +15,7 @@ const motherboards = [
       integration: "Intel Z490",
       socket: "LGA1200",
       formFactor: "ATX",
+      image:""
     },
     {
       name: "Gigabyte A520M AORUS Elite",
@@ -22,6 +24,7 @@ const motherboards = [
       integration: "AMD A520",
       socket: "AM4",
       formFactor: "Micro-ATX",
+      image:""
     },
     {
       name: "ASUS TUF Gaming X570-Plus (Wi-Fi)",
@@ -30,6 +33,7 @@ const motherboards = [
       integration: "AMD X570",
       socket: "AM4",
       formFactor: "ATX",
+      image:""
     },
     {
       name: "MSI B450 TOMAHAWK MAX II",
@@ -38,6 +42,7 @@ const motherboards = [
       integration: "AMD B450",
       socket: "AM4",
       formFactor: "ATX",
+      image:""
     },
     {
       name: "ASRock B660 Pro RS",
@@ -46,6 +51,7 @@ const motherboards = [
       integration: "Intel B660",
       socket: "LGA1700",
       formFactor: "ATX",
+      image:""
     },
     {
       name: "Gigabyte Z590 AORUS Elite AX",
@@ -54,6 +60,7 @@ const motherboards = [
       integration: "Intel Z590",
       socket: "LGA1200",
       formFactor: "ATX",
+      image:""
     },
     {
       name: "ASUS Prime B450M-A II",
@@ -62,6 +69,7 @@ const motherboards = [
       integration: "AMD B450",
       socket: "AM4",
       formFactor: "Micro-ATX",
+      image:""
     },
     {
       name: "MSI MAG B550M Mortar",
@@ -70,6 +78,7 @@ const motherboards = [
       integration: "AMD B550",
       socket: "AM4",
       formFactor: "Micro-ATX",
+      image:""
     },
     {
       name: "ASRock Z690 Taichi",
@@ -78,6 +87,7 @@ const motherboards = [
       integration: "Intel Z690",
       socket: "LGA1700",
       formFactor: "ATX",
+      image:""
     },
     {
       name: "Gigabyte X570S AERO G",
@@ -86,6 +96,7 @@ const motherboards = [
       integration: "AMD X570S",
       socket: "AM4",
       formFactor: "ATX",
+      image:""
     },
     {
       name: "ASUS ROG Maximus XIII Hero",
@@ -94,6 +105,7 @@ const motherboards = [
       integration: "Intel Z590",
       socket: "LGA1200",
       formFactor: "ATX",
+      image:""
     },
     {
       name: "MSI MEG Z690 UNIFY-X",
@@ -102,5 +114,6 @@ const motherboards = [
       integration: "Intel Z690",
       socket: "LGA1700",
       formFactor: "ATX",
+      image:""
     }]
   

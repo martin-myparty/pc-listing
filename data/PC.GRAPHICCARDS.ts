@@ -1,83 +1,92 @@
-const graphicsCards = [
-    {
+export const graphicsCards = [
+  {
       name: "NVIDIA GeForce RTX 3080",
       price: 700,
       company: "NVIDIA",
       gpuIntegration: "Ampere",
       memorySize: "10GB GDDR6X",
       interface: "PCIe 4.0",
-    },
-    {
+      image: "",
+  },
+  {
       name: "AMD Radeon RX 6800 XT",
       price: 650,
       company: "AMD",
       gpuIntegration: "RDNA 2",
       memorySize: "16GB GDDR6",
       interface: "PCIe 4.0",
-    },
-    {
+      image: "",
+  },
+  {
       name: "NVIDIA GeForce RTX 3060 Ti",
       price: 400,
       company: "NVIDIA",
       gpuIntegration: "Ampere",
       memorySize: "8GB GDDR6",
       interface: "PCIe 4.0",
-    },
-    {
+      image: "",
+  },
+  {
       name: "AMD Radeon RX 6700 XT",
       price: 480,
       company: "AMD",
       gpuIntegration: "RDNA 2",
       memorySize: "12GB GDDR6",
       interface: "PCIe 4.0",
-    },
-    {
+      image: "",
+  },
+  {
       name: "NVIDIA GeForce RTX 3090",
       price: 1500,
       company: "NVIDIA",
       gpuIntegration: "Ampere",
       memorySize: "24GB GDDR6X",
       interface: "PCIe 4.0",
-    },
-    {
+      image: "",
+  },
+  {
       name: "AMD Radeon RX 7900 XTX",
       price: 1000,
       company: "AMD",
       gpuIntegration: "RDNA 3",
       memorySize: "24GB GDDR6",
       interface: "PCIe 4.0",
-    },
-    {
+      image: "",
+  },
+  {
       name: "NVIDIA GeForce RTX 4070",
       price: 600,
       company: "NVIDIA",
       gpuIntegration: "Ada Lovelace",
       memorySize: "12GB GDDR6X",
       interface: "PCIe 4.0",
-    },
-    {
+      image: "",
+  },
+  {
       name: "AMD Radeon RX 7600",
       price: 270,
       company: "AMD",
       gpuIntegration: "RDNA 3",
       memorySize: "8GB GDDR6",
       interface: "PCIe 4.0",
-    },
-    {
+      image: "",
+  },
+  {
       name: "NVIDIA GeForce GTX 1660 Super",
       price: 250,
       company: "NVIDIA",
       gpuIntegration: "Turing",
       memorySize: "6GB GDDR6",
       interface: "PCIe 3.0",
-    },
-    {
+      image: "",
+  },
+  {
       name: "AMD Radeon RX 580",
       price: 200,
       company: "AMD",
       gpuIntegration: "Polaris",
       memorySize: "8GB GDDR5",
       interface: "PCIe 3.0",
-    },
-  ];
-  
+      image: "",
+  },
+];

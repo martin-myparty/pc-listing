@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import Image from 'next/image';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,8 +13,14 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold tracking-tighter">
-              PC Listing
+            <Link href="/" className="relative w-32 h-8 block">
+              <Image
+                src="/images/logo.png"
+                alt="PC Listing Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </Link>
           </div>
 
@@ -30,6 +37,11 @@ export default function Navbar() {
               className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
             >
               About
+            </Link>
+            <Link
+            href="/browse"
+            >
+            Browse
             </Link>
             <Link
               href="/pcBuilder"
