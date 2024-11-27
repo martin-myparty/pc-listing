@@ -1,7 +1,7 @@
 export const motherboards = [
     {
       name: "ASUS ROG Strix B550-F Gaming",
-      price: 200,
+      price: 20000,
       company: "ASUS",
       integration: "AMD B550",
       socket: "AM4",
@@ -10,7 +10,7 @@ export const motherboards = [
     },
     {
       name: "MSI MPG Z490 Gaming Edge WiFi",
-      price: 220,
+      price: 22000,
       company: "MSI",
       integration: "Intel Z490",
       socket: "LGA1200",
@@ -19,7 +19,7 @@ export const motherboards = [
     },
     {
       name: "Gigabyte A520M AORUS Elite",
-      price: 90,
+      price: 90000,
       company: "Gigabyte",
       integration: "AMD A520",
       socket: "AM4",
@@ -28,7 +28,7 @@ export const motherboards = [
     },
     {
       name: "ASUS TUF Gaming X570-Plus (Wi-Fi)",
-      price: 240,
+      price: 240000,
       company: "ASUS",
       integration: "AMD X570",
       socket: "AM4",
@@ -37,7 +37,7 @@ export const motherboards = [
     },
     {
       name: "MSI B450 TOMAHAWK MAX II",
-      price: 120,
+      price: 120000,
       company: "MSI",
       integration: "AMD B450",
       socket: "AM4",
@@ -46,7 +46,7 @@ export const motherboards = [
     },
     {
       name: "ASRock B660 Pro RS",
-      price: 150,
+      price: 150000,
       company: "ASRock",
       integration: "Intel B660",
       socket: "LGA1700",
@@ -55,7 +55,7 @@ export const motherboards = [
     },
     {
       name: "Gigabyte Z590 AORUS Elite AX",
-      price: 280,
+      price: 280000,
       company: "Gigabyte",
       integration: "Intel Z590",
       socket: "LGA1200",
@@ -64,7 +64,7 @@ export const motherboards = [
     },
     {
       name: "ASUS Prime B450M-A II",
-      price: 80,
+      price: 80000,
       company: "ASUS",
       integration: "AMD B450",
       socket: "AM4",
@@ -73,7 +73,7 @@ export const motherboards = [
     },
     {
       name: "MSI MAG B550M Mortar",
-      price: 140,
+      price: 140000,
       company: "MSI",
       integration: "AMD B550",
       socket: "AM4",
@@ -82,7 +82,7 @@ export const motherboards = [
     },
     {
       name: "ASRock Z690 Taichi",
-      price: 370,
+      price: 370000,
       company: "ASRock",
       integration: "Intel Z690",
       socket: "LGA1700",
@@ -91,7 +91,7 @@ export const motherboards = [
     },
     {
       name: "Gigabyte X570S AERO G",
-      price: 290,
+      price: 290000,
       company: "Gigabyte",
       integration: "AMD X570S",
       socket: "AM4",
@@ -100,7 +100,7 @@ export const motherboards = [
     },
     {
       name: "ASUS ROG Maximus XIII Hero",
-      price: 500,
+      price: 500000,
       company: "ASUS",
       integration: "Intel Z590",
       socket: "LGA1200",
@@ -109,7 +109,7 @@ export const motherboards = [
     },
     {
       name: "MSI MEG Z690 UNIFY-X",
-      price: 450,
+      price: 45000,
       company: "MSI",
       integration: "Intel Z690",
       socket: "LGA1700",

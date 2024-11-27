@@ -1,7 +1,7 @@
 export const ramModules = [
     {
       name: "Corsair Vengeance RGB Pro",
-      price: 159,
+      price: 1590,
       company: "Corsair",
       capacity: "32GB",
       speed: "3600MHz",
@@ -10,7 +10,7 @@ export const ramModules = [
     },
     {
       name: "G.Skill Trident Z RGB",
-      price: 189,
+      price: 1890,
       company: "G.Skill",
       capacity: "32GB",
       speed: "3600MHz",

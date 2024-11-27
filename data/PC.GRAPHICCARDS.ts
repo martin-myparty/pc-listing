@@ -1,7 +1,7 @@
 export const graphicsCards = [
   {
       name: "NVIDIA GeForce RTX 3080",
-      price: 700,
+      price: 70000,
       company: "NVIDIA",
       gpuIntegration: "Ampere",
       memorySize: "10GB GDDR6X",
@@ -10,7 +10,7 @@ export const graphicsCards = [
   },
   {
       name: "AMD Radeon RX 6800 XT",
-      price: 650,
+      price: 650000,
       company: "AMD",
       gpuIntegration: "RDNA 2",
       memorySize: "16GB GDDR6",
@@ -19,7 +19,7 @@ export const graphicsCards = [
   },
   {
       name: "NVIDIA GeForce RTX 3060 Ti",
-      price: 400,
+      price: 400000,
       company: "NVIDIA",
       gpuIntegration: "Ampere",
       memorySize: "8GB GDDR6",
@@ -28,7 +28,7 @@ export const graphicsCards = [
   },
   {
       name: "AMD Radeon RX 6700 XT",
-      price: 480,
+      price: 48000,
       company: "AMD",
       gpuIntegration: "RDNA 2",
       memorySize: "12GB GDDR6",
@@ -37,7 +37,7 @@ export const graphicsCards = [
   },
   {
       name: "NVIDIA GeForce RTX 3090",
-      price: 1500,
+      price: 150000,
       company: "NVIDIA",
       gpuIntegration: "Ampere",
       memorySize: "24GB GDDR6X",
@@ -46,7 +46,7 @@ export const graphicsCards = [
   },
   {
       name: "AMD Radeon RX 7900 XTX",
-      price: 1000,
+      price: 100000,
       company: "AMD",
       gpuIntegration: "RDNA 3",
       memorySize: "24GB GDDR6",
@@ -55,7 +55,7 @@ export const graphicsCards = [
   },
   {
       name: "NVIDIA GeForce RTX 4070",
-      price: 600,
+      price: 60000,
       company: "NVIDIA",
       gpuIntegration: "Ada Lovelace",
       memorySize: "12GB GDDR6X",
@@ -64,7 +64,7 @@ export const graphicsCards = [
   },
   {
       name: "AMD Radeon RX 7600",
-      price: 270,
+      price: 270000,
       company: "AMD",
       gpuIntegration: "RDNA 3",
       memorySize: "8GB GDDR6",
@@ -73,7 +73,7 @@ export const graphicsCards = [
   },
   {
       name: "NVIDIA GeForce GTX 1660 Super",
-      price: 250,
+      price: 250000,
       company: "NVIDIA",
       gpuIntegration: "Turing",
       memorySize: "6GB GDDR6",
@@ -82,7 +82,7 @@ export const graphicsCards = [
   },
   {
       name: "AMD Radeon RX 580",
-      price: 200,
+      price: 200000,
       company: "AMD",
       gpuIntegration: "Polaris",
       memorySize: "8GB GDDR5",

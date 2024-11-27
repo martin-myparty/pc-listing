@@ -1,7 +1,7 @@
 const processors = [
   {
     name: "AMD Ryzen 9 5950X",
-    price: 799,
+    price: 79900,
     company: "AMD",
     cores: 16,
     threads: 32,
@@ -10,7 +10,7 @@ const processors = [
   },
   {
     name: "Intel Core i9-12900K",
-    price: 589,
+    price: 58900,
     company: "Intel",
     cores: 16,
     threads: 24,
