@@ -6,6 +6,7 @@ const processors = [
     cores: 16,
     threads: 32,
     socket: "AM4",
+    image: "https://m.media-amazon.com/images/I/51smqWKarCL.jpg"
   },
   {
     name: "Intel Core i9-12900K",
@@ -14,7 +15,7 @@ const processors = [
     cores: 16,
     threads: 24,
     socket: "LGA1700",
-    image: "/images/processors/i9-12900k.jpg"
+    image: "https://m.media-amazon.com/images/I/51smqWKarCL.jpg"
   },
 ];
 

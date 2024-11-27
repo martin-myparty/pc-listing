@@ -6,7 +6,7 @@ export const ramModules = [
       capacity: "32GB",
       speed: "3600MHz",
       type: "DDR4",
-      image: "/images/ram/corsair-vengeance-rgb.jpg"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9t_17izMKuc75tiHedez7dwSQTLx3ybbEfw&s"
     },
     {
       name: "G.Skill Trident Z RGB",
@@ -15,6 +15,6 @@ export const ramModules = [
       capacity: "32GB",
       speed: "3600MHz",
       type: "DDR4",
-      image: "/images/ram/gskill-trident-z.jpg"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9t_17izMKuc75tiHedez7dwSQTLx3ybbEfw&s"
     },
   ];

@@ -6,7 +6,7 @@ export const motherboards = [
       integration: "AMD B550",
       socket: "AM4",
       formFactor: "ATX",
-      image:""
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
     },
     {
       name: "MSI MPG Z490 Gaming Edge WiFi",
@@ -15,7 +15,7 @@ export const motherboards = [
       integration: "Intel Z490",
       socket: "LGA1200",
       formFactor: "ATX",
-      image:""
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
     },
     {
       name: "Gigabyte A520M AORUS Elite",
@@ -24,7 +24,7 @@ export const motherboards = [
       integration: "AMD A520",
       socket: "AM4",
       formFactor: "Micro-ATX",
-      image:""
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
     },
     {
       name: "ASUS TUF Gaming X570-Plus (Wi-Fi)",
@@ -33,7 +33,7 @@ export const motherboards = [
       integration: "AMD X570",
       socket: "AM4",
       formFactor: "ATX",
-      image:""
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
     },
     {
       name: "MSI B450 TOMAHAWK MAX II",
@@ -42,7 +42,7 @@ export const motherboards = [
       integration: "AMD B450",
       socket: "AM4",
       formFactor: "ATX",
-      image:""
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
     },
     {
       name: "ASRock B660 Pro RS",
@@ -51,7 +51,7 @@ export const motherboards = [
       integration: "Intel B660",
       socket: "LGA1700",
       formFactor: "ATX",
-      image:""
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
     },
     {
       name: "Gigabyte Z590 AORUS Elite AX",
@@ -60,7 +60,7 @@ export const motherboards = [
       integration: "Intel Z590",
       socket: "LGA1200",
       formFactor: "ATX",
-      image:""
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
     },
     {
       name: "ASUS Prime B450M-A II",
@@ -69,7 +69,7 @@ export const motherboards = [
       integration: "AMD B450",
       socket: "AM4",
       formFactor: "Micro-ATX",
-      image:""
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
     },
     {
       name: "MSI MAG B550M Mortar",
@@ -78,7 +78,7 @@ export const motherboards = [
       integration: "AMD B550",
       socket: "AM4",
       formFactor: "Micro-ATX",
-      image:""
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
     },
     {
       name: "ASRock Z690 Taichi",
@@ -87,7 +87,7 @@ export const motherboards = [
       integration: "Intel Z690",
       socket: "LGA1700",
       formFactor: "ATX",
-      image:""
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
     },
     {
       name: "Gigabyte X570S AERO G",
@@ -96,7 +96,7 @@ export const motherboards = [
       integration: "AMD X570S",
       socket: "AM4",
       formFactor: "ATX",
-      image:""
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
     },
     {
       name: "ASUS ROG Maximus XIII Hero",
@@ -105,7 +105,7 @@ export const motherboards = [
       integration: "Intel Z590",
       socket: "LGA1200",
       formFactor: "ATX",
-      image:""
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
     },
     {
       name: "MSI MEG Z690 UNIFY-X",
@@ -114,6 +114,6 @@ export const motherboards = [
       integration: "Intel Z690",
       socket: "LGA1700",
       formFactor: "ATX",
-      image:""
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
     }]
   

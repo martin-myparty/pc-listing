@@ -6,7 +6,7 @@ export const graphicsCards = [
       gpuIntegration: "Ampere",
       memorySize: "10GB GDDR6X",
       interface: "PCIe 4.0",
-      image: "",
+      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
   },
   {
       name: "AMD Radeon RX 6800 XT",
@@ -15,7 +15,7 @@ export const graphicsCards = [
       gpuIntegration: "RDNA 2",
       memorySize: "16GB GDDR6",
       interface: "PCIe 4.0",
-      image: "",
+      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
   },
   {
       name: "NVIDIA GeForce RTX 3060 Ti",
@@ -24,7 +24,7 @@ export const graphicsCards = [
       gpuIntegration: "Ampere",
       memorySize: "8GB GDDR6",
       interface: "PCIe 4.0",
-      image: "",
+      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
   },
   {
       name: "AMD Radeon RX 6700 XT",
@@ -33,7 +33,7 @@ export const graphicsCards = [
       gpuIntegration: "RDNA 2",
       memorySize: "12GB GDDR6",
       interface: "PCIe 4.0",
-      image: "",
+      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
   },
   {
       name: "NVIDIA GeForce RTX 3090",
@@ -42,7 +42,7 @@ export const graphicsCards = [
       gpuIntegration: "Ampere",
       memorySize: "24GB GDDR6X",
       interface: "PCIe 4.0",
-      image: "",
+      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
   },
   {
       name: "AMD Radeon RX 7900 XTX",
@@ -51,7 +51,7 @@ export const graphicsCards = [
       gpuIntegration: "RDNA 3",
       memorySize: "24GB GDDR6",
       interface: "PCIe 4.0",
-      image: "",
+      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
   },
   {
       name: "NVIDIA GeForce RTX 4070",
@@ -60,7 +60,7 @@ export const graphicsCards = [
       gpuIntegration: "Ada Lovelace",
       memorySize: "12GB GDDR6X",
       interface: "PCIe 4.0",
-      image: "",
+      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
   },
   {
       name: "AMD Radeon RX 7600",
@@ -69,7 +69,7 @@ export const graphicsCards = [
       gpuIntegration: "RDNA 3",
       memorySize: "8GB GDDR6",
       interface: "PCIe 4.0",
-      image: "",
+      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
   },
   {
       name: "NVIDIA GeForce GTX 1660 Super",
@@ -78,7 +78,7 @@ export const graphicsCards = [
       gpuIntegration: "Turing",
       memorySize: "6GB GDDR6",
       interface: "PCIe 3.0",
-      image: "",
+      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
   },
   {
       name: "AMD Radeon RX 580",
@@ -87,6 +87,6 @@ export const graphicsCards = [
       gpuIntegration: "Polaris",
       memorySize: "8GB GDDR5",
       interface: "PCIe 3.0",
-      image: "",
+      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
   },
 ];

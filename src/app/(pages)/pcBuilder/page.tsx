@@ -2,9 +2,7 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { graphicsCards } from '../../../../data/PC.GRAPHICCARDS';
-import { motherboards } from '../../../../data/PC.MOTHERBOARDS';
 import { processors } from '../../../../data/PC.PROCESSORS';
-import { ramModules } from '../../../../data/PC.RAM';
 import Image from 'next/image';
 
 // Define types for our components
@@ -27,6 +25,20 @@ type PCBuild = {
     motherboard?: PCComponent;
     ram?: PCComponent;
   };
+};
+
+// Add type for DragDropContext result
+type DragDropResult = {
+  draggableId: string;
+  type: string;
+  source: {
+    droppableId: string;
+    index: number;
+  };
+  destination: {
+    droppableId: string;
+    index: number;
+  } | null;
 };
 
 export default function PcBuilderScreen() {
@@ -59,14 +71,13 @@ export default function PcBuilderScreen() {
     }
   ]);
   
-  const [selectedComponents, setSelectedComponents] = useState<PCComponent[]>([]);
+  const [showNewBuildDialog, setShowNewBuildDialog] = useState(false);
   const [newBuildName, setNewBuildName] = useState('');
-  const [showNewBuildInput, setShowNewBuildInput] = useState(false);
 
-  const handleDragEnd = (result: any) => {
+  const handleDragEnd = (result: DragDropResult) => {
     if (!result.destination) return;
 
-    const { source, destination, draggableId } = result;
+    const { destination, draggableId } = result;
 
     // Handle dropping component into a build
     if (destination.droppableId.startsWith('build-')) {
@@ -91,26 +102,23 @@ export default function PcBuilderScreen() {
     }
   };
 
-  const addNewBuild = () => {
-    if (!newBuildName.trim()) return;
-    
-    setBuilds([
-      ...builds,
-      {
-        id: `build-${builds.length + 1}`,
-        name: newBuildName,
-        components: {}
-      }
-    ]);
-    
-    setNewBuildName('');
-    setShowNewBuildInput(false);
-  };
-
   const calculateBuildPrice = (build: PCBuild) => {
     return Object.values(build.components).reduce((total, component) => {
       return total + (component?.price || 0);
     }, 0);
+  };
+
+  const handleAddNewBuild = () => {
+    if (!newBuildName.trim()) return;
+    
+    setBuilds(prev => [...prev, {
+      id: `build-${prev.length + 1}`,
+      name: newBuildName,
+      components: {}
+    }]);
+    
+    setNewBuildName('');
+    setShowNewBuildDialog(false);
   };
 
   return (
@@ -172,9 +180,9 @@ export default function PcBuilderScreen() {
           <div className="flex-1">
             <div className="flex justify-between items-center mb-6">
               <h1 className="text-2xl font-bold">PC Builds</h1>
-              {!showNewBuildInput ? (
+              {!showNewBuildDialog ? (
                 <button
-                  onClick={() => setShowNewBuildInput(true)}
+                  onClick={() => setShowNewBuildDialog(true)}
                   className="bg-black text-white dark:bg-white dark:text-black px-4 py-2 rounded-lg"
                 >
                   New Build
@@ -189,7 +197,7 @@ export default function PcBuilderScreen() {
                     className="px-3 py-2 rounded-lg border"
                   />
                   <button
-                    onClick={addNewBuild}
+                    onClick={handleAddNewBuild}
                     className="bg-black text-white dark:bg-white dark:text-black px-4 py-2 rounded-lg"
                   >
                     Add
