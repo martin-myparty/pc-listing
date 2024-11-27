@@ -48,7 +48,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-square">
             <Image
-              src="/images/pc-build-preview.png"
+              src="/images/pc-build-preview.jpg"
               alt="PC Builder Interface"
               fill
               className="object-contain"
