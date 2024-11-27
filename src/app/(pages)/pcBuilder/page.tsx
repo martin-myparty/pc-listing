@@ -165,6 +165,43 @@ const BUDGET_FLEXIBILITY_OPTIONS = [
   }
 ];
 
+// Add this type for component recommendations
+type ComponentRecommendation = {
+  type: ComponentType;
+  minPrice: number;
+  maxPrice: number;
+  percentage: number; // Percentage of budget to allocate
+  priority: number; // 1 is highest priority
+};
+
+// Add recommended component allocations for each build purpose
+const PURPOSE_RECOMMENDATIONS: Record<string, ComponentRecommendation[]> = {
+  gaming: [
+    { type: 'gpu', minPrice: 35000, maxPrice: 50000, percentage: 40, priority: 1 }, // 40% of budget
+    { type: 'cpu', minPrice: 20000, maxPrice: 35000, percentage: 25, priority: 2 }, // 25% of budget
+    { type: 'motherboard', minPrice: 8000, maxPrice: 15000, percentage: 15, priority: 3 }, // 15% of budget
+    { type: 'ram', minPrice: 5000, maxPrice: 10000, percentage: 10, priority: 4 }, // 10% of budget
+  ],
+  casual: [
+    { type: 'cpu', minPrice: 15000, maxPrice: 25000, percentage: 35, priority: 1 },
+    { type: 'gpu', minPrice: 15000, maxPrice: 25000, percentage: 25, priority: 2 },
+    { type: 'motherboard', minPrice: 5000, maxPrice: 10000, percentage: 20, priority: 3 },
+    { type: 'ram', minPrice: 3000, maxPrice: 8000, percentage: 20, priority: 4 },
+  ],
+  workstation: [
+    { type: 'cpu', minPrice: 25000, maxPrice: 40000, percentage: 35, priority: 1 },
+    { type: 'ram', minPrice: 10000, maxPrice: 20000, percentage: 25, priority: 2 },
+    { type: 'motherboard', minPrice: 10000, maxPrice: 20000, percentage: 20, priority: 3 },
+    { type: 'gpu', minPrice: 20000, maxPrice: 30000, percentage: 15, priority: 4 },
+  ],
+  // Add other purposes...
+};
+
+// Keep this type definition outside
+type RecommendationWithComponents = ComponentRecommendation & {
+  components: PCComponent[];
+};
+
 export default function PcBuilderScreen() {
   // Convert our data to the PCComponent format
   const availableComponents: PCComponent[] = [
@@ -713,6 +750,47 @@ export default function PcBuilderScreen() {
     });
   };
 
+  // Move getRecommendedComponents inside the component
+  const getRecommendedComponents = (build: PCBuild): RecommendationWithComponents[] => {
+    const recommendations = PURPOSE_RECOMMENDATIONS[build.purpose] || [];
+    const budget = build.budget;
+    
+    return recommendations.map(rec => {
+      const targetPrice = (budget * rec.percentage) / 100;
+      const tolerance = build.budgetFlexibility === 'strict' ? 0.1 : 
+                       build.budgetFlexibility === 'flexible' ? 0.2 : 0.3;
+      
+      const minPrice = targetPrice * (1 - tolerance);
+      const maxPrice = targetPrice * (1 + tolerance);
+      
+      const recommendedComponents = availableComponents.filter((comp: PCComponent) => 
+        comp.type === rec.type && 
+        comp.price >= minPrice && 
+        comp.price <= maxPrice
+      );
+
+      return {
+        ...rec,
+        components: recommendedComponents,
+      };
+    });
+  };
+
+  // Move getRecommendationStatus inside as well
+  const getRecommendationStatus = (type: ComponentType, build: PCBuild) => {
+    const recommendations = getRecommendedComponents(build);
+    const recommendation = recommendations.find((rec: RecommendationWithComponents) => rec.type === type);
+    
+    if (!recommendation) return null;
+    
+    return {
+      hasRecommendations: recommendation.components.length > 0,
+      count: recommendation.components.length,
+      percentage: recommendation.percentage,
+      targetBudget: (build.budget * recommendation.percentage) / 100
+    };
+  };
+
   return (
     <div className="min-h-screen w-full pt-20 pb-16 bg-[#111827]">
       <DragDropContext onDragEnd={handleDragEnd}>
@@ -736,10 +814,24 @@ export default function PcBuilderScreen() {
                         <div key={type} className="bg-[#2D3748] rounded-lg overflow-hidden">
                           <button
                             onClick={() => toggleCategory(type as ComponentType)}
-                            className="w-full px-4 py-3 flex items-center justify-between text-white hover:bg-[#374151] transition-colors"
+                            className="w-full px-4 py-3 flex items-center justify-between text-white hover:bg-[#374151] transition-colors relative"
                           >
-                            <span className="font-medium">
+                            <span className="font-medium flex items-center gap-2">
                               {COMPONENT_DISPLAY_NAMES[type as ComponentType]}
+                              {builds.map(build => {
+                                const status = getRecommendationStatus(type as ComponentType, build);
+                                if (status?.hasRecommendations) {
+                                  return (
+                                    <span key={build.id} className="flex items-center">
+                                      <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                      <span className="ml-2 text-xs text-green-400">
+                                        {status.count} recommended
+                                      </span>
+                                    </span>
+                                  );
+                                }
+                                return null;
+                              })}
                             </span>
                             {expandedCategories[type as ComponentType] ? (
                               <FiChevronDown className="w-5 h-5" />
@@ -752,6 +844,30 @@ export default function PcBuilderScreen() {
                             overflow-hidden transition-all duration-200 ease-in-out
                             ${expandedCategories[type as ComponentType] ? 'max-h-[1000px]' : 'max-h-0'}
                           `}>
+                            {builds.length > 0 && (
+                              <div className="px-4 py-2 bg-gray-800">
+                                {builds.map(build => {
+                                  const status = getRecommendationStatus(type as ComponentType, build);
+                                  if (status?.hasRecommendations) {
+                                    return (
+                                      <div key={build.id} className="text-sm text-gray-400">
+                                        <p className="flex items-center gap-2">
+                                          <span className="w-2 h-2 rounded-full bg-green-500" />
+                                          For {build.name}:
+                                        </p>
+                                        <p className="ml-4">
+                                          Budget allocation: ₹{Math.round(status.targetBudget).toLocaleString()} ({status.percentage}%)
+                                        </p>
+                                        <p className="ml-4">
+                                          {status.count} compatible options found
+                                        </p>
+                                      </div>
+                                    );
+                                  }
+                                  return null;
+                                })}
+                              </div>
+                            )}
                             <div className="space-y-2 p-2">
                               {components.map((component, index) => (
                                 <Draggable
@@ -759,41 +875,62 @@ export default function PcBuilderScreen() {
                                   draggableId={component.id}
                                   index={index}
                                 >
-                                  {(provided) => (
-                                    <div
-                                      ref={provided.innerRef}
-                                      {...provided.draggableProps}
-                                      {...provided.dragHandleProps}
-                                      className="bg-[#374151] p-3 rounded-lg relative group"
-                                    >
-                                      <button
-                                        onClick={() => toggleFavorite(component)}
-                                        className={`absolute right-2 top-2 p-1 rounded-full 
-                                          ${favoriteComponents.some(c => c.id === component.id)
-                                            ? 'text-red-500'
-                                            : 'text-gray-400 opacity-0 group-hover:opacity-100'
-                                          }`}
+                                  {(provided) => {
+                                    const isRecommended = builds.some(build => {
+                                      const recommendations = getRecommendedComponents(build);
+                                      return recommendations.some(rec => 
+                                        rec.components.some((c: PCComponent) => c.id === component.id)
+                                      );
+                                    });
+
+                                    return (
+                                      <div
+                                        ref={provided.innerRef}
+                                        {...provided.draggableProps}
+                                        {...provided.dragHandleProps}
+                                        className={`bg-[#374151] p-3 rounded-lg relative group
+                                          ${isRecommended ? 'ring-2 ring-green-500 dark:ring-green-400' : ''}
+                                        `}
                                       >
-                                        <FiHeart />
-                                      </button>
-                                      <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 relative">
-                                          <Image
-                                            src={component.image || '/images/placeholder.jpg'}
-                                            alt={component.name}
-                                            fill
-                                            className="object-contain"
-                                          />
-                                        </div>
-                                        <div>
-                                          <p className="font-medium text-sm text-white">{component.name}</p>
-                                          <p className="text-sm text-gray-400">
-                                            ₹{component.price}
-                                          </p>
+                                        {isRecommended && (
+                                          <div className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">
+                                            Recommended
+                                          </div>
+                                        )}
+                                        <button
+                                          onClick={() => toggleFavorite(component)}
+                                          className={`absolute right-2 top-2 p-1 rounded-full 
+                                            ${favoriteComponents.some(c => c.id === component.id)
+                                              ? 'text-red-500'
+                                              : 'text-gray-400 opacity-0 group-hover:opacity-100'
+                                            }`}
+                                        >
+                                          <FiHeart />
+                                        </button>
+                                        <div className="flex items-center gap-3">
+                                          <div className="w-10 h-10 relative">
+                                            <Image
+                                              src={component.image || '/images/placeholder.jpg'}
+                                              alt={component.name}
+                                              fill
+                                              className="object-contain"
+                                            />
+                                          </div>
+                                          <div>
+                                            <p className="font-medium text-sm text-white">{component.name}</p>
+                                            <p className="text-sm text-gray-400">
+                                              ₹{component.price.toLocaleString()}
+                                            </p>
+                                            {isRecommended && (
+                                              <p className="text-xs text-green-400 mt-1">
+                                                Perfect match for your build
+                                              </p>
+                                            )}
+                                          </div>
                                         </div>
                                       </div>
-                                    </div>
-                                  )}
+                                    );
+                                  }}
                                 </Draggable>
                               ))}
                             </div>
