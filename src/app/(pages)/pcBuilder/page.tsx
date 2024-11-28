@@ -206,31 +206,31 @@ export default function PcBuilderScreen() {
   // Convert our data to the PCComponent format
   const availableComponents: PCComponent[] = [
     ...graphicsCards.map(card => ({
-      id: `gpu-${card.name}`,
+      id: card.id,
       name: card.name,
       price: card.price,
       company: card.company,
       type: 'gpu' as ComponentType,
       image: card.image
     })),
-    ...processors.map(cpu => ({
-      id: `cpu-${cpu.name}`,
+    ...processors.map((cpu, index) => ({
+      id: `cpu-${index + 1}`,  // Generate ID using index
       name: cpu.name,
       price: cpu.price,
       company: cpu.company,
       type: 'cpu' as ComponentType,
       image: cpu.image
     })),
-    ...motherboards.map(mb => ({
-      id: `motherboard-${mb.name}`,
+    ...motherboards.map((mb, index) => ({
+      id: `mb-${index + 1}`,  // Generate ID using index
       name: mb.name,
       price: mb.price,
       company: mb.company,
       type: 'motherboard' as ComponentType,
       image: mb.image
     })),
-    ...ramModules.map(ram => ({
-      id: `ram-${ram.name}`,
+    ...ramModules.map((ram, index) => ({
+      id: `ram-${index + 1}`,  // Generate ID using index
       name: ram.name,
       price: ram.price,
       company: ram.company,

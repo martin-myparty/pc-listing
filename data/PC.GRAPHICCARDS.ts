@@ -1,92 +1,35 @@
-export const graphicsCards = [
-  {
-      name: "NVIDIA GeForce RTX 3080",
-      price: 70000,
-      company: "NVIDIA",
-      gpuIntegration: "Ampere",
-      memorySize: "10GB GDDR6X",
-      interface: "PCIe 4.0",
-      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
-  },
-  {
-      name: "AMD Radeon RX 6800 XT",
-      price: 650000,
-      company: "AMD",
-      gpuIntegration: "RDNA 2",
-      memorySize: "16GB GDDR6",
-      interface: "PCIe 4.0",
-      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
-  },
-  {
-      name: "NVIDIA GeForce RTX 3060 Ti",
-      price: 400000,
-      company: "NVIDIA",
-      gpuIntegration: "Ampere",
-      memorySize: "8GB GDDR6",
-      interface: "PCIe 4.0",
-      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
-  },
-  {
-      name: "AMD Radeon RX 6700 XT",
-      price: 48000,
-      company: "AMD",
-      gpuIntegration: "RDNA 2",
-      memorySize: "12GB GDDR6",
-      interface: "PCIe 4.0",
-      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
-  },
-  {
-      name: "NVIDIA GeForce RTX 3090",
-      price: 150000,
-      company: "NVIDIA",
-      gpuIntegration: "Ampere",
-      memorySize: "24GB GDDR6X",
-      interface: "PCIe 4.0",
-      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
-  },
-  {
-      name: "AMD Radeon RX 7900 XTX",
-      price: 100000,
-      company: "AMD",
-      gpuIntegration: "RDNA 3",
-      memorySize: "24GB GDDR6",
-      interface: "PCIe 4.0",
-      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
-  },
-  {
-      name: "NVIDIA GeForce RTX 4070",
-      price: 60000,
-      company: "NVIDIA",
-      gpuIntegration: "Ada Lovelace",
-      memorySize: "12GB GDDR6X",
-      interface: "PCIe 4.0",
-      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
-  },
-  {
-      name: "AMD Radeon RX 7600",
-      price: 270000,
-      company: "AMD",
-      gpuIntegration: "RDNA 3",
-      memorySize: "8GB GDDR6",
-      interface: "PCIe 4.0",
-      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
-  },
-  {
-      name: "NVIDIA GeForce GTX 1660 Super",
-      price: 250000,
-      company: "NVIDIA",
-      gpuIntegration: "Turing",
-      memorySize: "6GB GDDR6",
-      interface: "PCIe 3.0",
-      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
-  },
-  {
-      name: "AMD Radeon RX 580",
-      price: 200000,
-      company: "AMD",
-      gpuIntegration: "Polaris",
-      memorySize: "8GB GDDR5",
-      interface: "PCIe 3.0",
-      image: "https://m.media-amazon.com/images/I/71Cp5-y6TOL.jpg",
-  },
-];
+export const graphicsCards =
+    [
+        {
+            "id": "gpu-1",
+            "name": "NVIDIA GeForce RTX 4090",
+            "price": 149999.99,
+            "company": "NVIDIA",
+            "vram": "24GB GDDR6X",
+            "image": "https://www.nvidia.com/en-us/geforce/graphics-cards/_jcr_content/root/responsivegrid/nv_container_1965276325/nv_teaser.coreimg.100.850.jpeg/1694172069214/geforce-rtx-40-series-new.jpeg"
+        },
+        {
+            "id": "gpu-2",
+            "name": "AMD Radeon RX 7900 XTX",
+            "price": 89999.99,
+            "company": "AMD",
+            "vram": "24GB GDDR6",
+            "image": "https://ms.codes/cdn/shop/articles/8VPM4dit8g6hKgMRoxkDCm_52e0cc46-bac4-4a2d-9a23-d518dba0e80e.jpg?v=1707859996"
+        },
+        {
+            "id": "gpu-3",
+            "name": "NVIDIA GeForce RTX 4080",
+            "price": 119999.99,
+            "company": "NVIDIA",
+            "vram": "16GB GDDR6X",
+            "image": "https://www.nvidia.com/en-us/geforce/graphics-cards/_jcr_content/root/responsivegrid/nv_container_1965276325/nv_teaser.coreimg.100.850.jpeg/1694172069214/geforce-rtx-40-series-new.jpeg"
+        },
+        {
+            "id": "gpu-4",
+            "name": "AMD Radeon RX 7800 XT",
+            "price": 59999.99,
+            "company": "AMD",
+            "vram": "16GB GDDR6",
+            "image": "https://ms.codes/cdn/shop/articles/8VPM4dit8g6hKgMRoxkDCm_52e0cc46-bac4-4a2d-9a23-d518dba0e80e.jpg?v=1707859996"
+        }
+    ];

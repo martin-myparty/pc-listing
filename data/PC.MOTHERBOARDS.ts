@@ -1,119 +1,39 @@
 export const motherboards = [
     {
-      name: "ASUS ROG Strix B550-F Gaming",
-      price: 20000,
-      company: "ASUS",
-      integration: "AMD B550",
-      socket: "AM4",
+      name: "NVIDIA Z790 AORUS",
+      price: 599.99,
+      company: "NVIDIA",
+      integration: "Intel",
+      socket: "LGA 1700",
       formFactor: "ATX",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
+      image: "https://www.nvidia.com/en-us/geforce/graphics-cards/_jcr_content/root/responsivegrid/nv_container_1965276325/nv_teaser.coreimg.100.850.jpeg/1694172069214/geforce-rtx-40-series-new.jpeg"
     },
     {
-      name: "MSI MPG Z490 Gaming Edge WiFi",
-      price: 22000,
-      company: "MSI",
-      integration: "Intel Z490",
-      socket: "LGA1200",
+      name: "AMD B650 Gaming",
+      price: 449.99,
+      company: "AMD",
+      integration: "AMD",
+      socket: "AM5",
       formFactor: "ATX",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
+      image: "https://ms.codes/cdn/shop/articles/8VPM4dit8g6hKgMRoxkDCm_52e0cc46-bac4-4a2d-9a23-d518dba0e80e.jpg?v=1707859996"
     },
     {
-      name: "Gigabyte A520M AORUS Elite",
-      price: 90000,
-      company: "Gigabyte",
-      integration: "AMD A520",
-      socket: "AM4",
+      name: "NVIDIA B760M PRO",
+      price: 299.99,
+      company: "NVIDIA",
+      integration: "Intel",
+      socket: "LGA 1700",
       formFactor: "Micro-ATX",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
+      image: "https://www.nvidia.com/en-us/geforce/graphics-cards/_jcr_content/root/responsivegrid/nv_container_1965276325/nv_teaser.coreimg.100.850.jpeg/1694172069214/geforce-rtx-40-series-new.jpeg"
     },
     {
-      name: "ASUS TUF Gaming X570-Plus (Wi-Fi)",
-      price: 240000,
-      company: "ASUS",
-      integration: "AMD X570",
-      socket: "AM4",
-      formFactor: "ATX",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
-    },
-    {
-      name: "MSI B450 TOMAHAWK MAX II",
-      price: 120000,
-      company: "MSI",
-      integration: "AMD B450",
-      socket: "AM4",
-      formFactor: "ATX",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
-    },
-    {
-      name: "ASRock B660 Pro RS",
-      price: 150000,
-      company: "ASRock",
-      integration: "Intel B660",
-      socket: "LGA1700",
-      formFactor: "ATX",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
-    },
-    {
-      name: "Gigabyte Z590 AORUS Elite AX",
-      price: 280000,
-      company: "Gigabyte",
-      integration: "Intel Z590",
-      socket: "LGA1200",
-      formFactor: "ATX",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
-    },
-    {
-      name: "ASUS Prime B450M-A II",
-      price: 80000,
-      company: "ASUS",
-      integration: "AMD B450",
-      socket: "AM4",
-      formFactor: "Micro-ATX",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
-    },
-    {
-      name: "MSI MAG B550M Mortar",
-      price: 140000,
-      company: "MSI",
-      integration: "AMD B550",
-      socket: "AM4",
-      formFactor: "Micro-ATX",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
-    },
-    {
-      name: "ASRock Z690 Taichi",
-      price: 370000,
-      company: "ASRock",
-      integration: "Intel Z690",
-      socket: "LGA1700",
-      formFactor: "ATX",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
-    },
-    {
-      name: "Gigabyte X570S AERO G",
-      price: 290000,
-      company: "Gigabyte",
-      integration: "AMD X570S",
-      socket: "AM4",
-      formFactor: "ATX",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
-    },
-    {
-      name: "ASUS ROG Maximus XIII Hero",
-      price: 500000,
-      company: "ASUS",
-      integration: "Intel Z590",
-      socket: "LGA1200",
-      formFactor: "ATX",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
-    },
-    {
-      name: "MSI MEG Z690 UNIFY-X",
-      price: 45000,
-      company: "MSI",
-      integration: "Intel Z690",
-      socket: "LGA1700",
-      formFactor: "ATX",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQj3FPPl0EQhNI5SMnmnaK0A8XOHDvF_RE0g&s"
-    }]
+      name: "AMD X670E Creation",
+      price: 699.99,
+      company: "AMD",
+      integration: "AMD",
+      socket: "AM5",
+      formFactor: "E-ATX",
+      image: "https://ms.codes/cdn/shop/articles/8VPM4dit8g6hKgMRoxkDCm_52e0cc46-bac4-4a2d-9a23-d518dba0e80e.jpg?v=1707859996"
+    }
+];
   
