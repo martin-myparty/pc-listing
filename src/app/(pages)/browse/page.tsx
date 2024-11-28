@@ -9,19 +9,69 @@ import { Slider } from '@/app/components/Slider';
 import { Sparkles, ArrowUp, ArrowDown } from 'lucide-react';
 import { CustomSelect } from '@/app/components/CustomSelect';
 
+// Create specific types for each component category
+type GPUComponent = {
+  category: 'gpu';
+  id: string;
+  name: string;
+  price: number;
+  company: string;
+  image?: string;
+  vram: string;
+};
+
+type CPUComponent = {
+  category: 'cpu';
+  id: string;
+  name: string;
+  price: number;
+  company: string;
+  image?: string;
+  cores: number;
+  threads: number;
+  base_clock: string;
+  turbo_clock: string;
+  description: string;
+};
+
+type MotherboardComponent = {
+  category: 'motherboard';
+  id: string;
+  name: string;
+  price: number;
+  company: string;
+  image?: string;
+  integration: string;
+  socket: string;
+  formFactor: string;
+};
+
+type RAMComponent = {
+  category: 'ram';
+  id: string;
+  name: string;
+  price: number;
+  company: string;
+  image?: string;
+  capacity: string;
+  speed: string;
+};
+
+// Union type for all component types
+type ComponentWithCategory = GPUComponent | CPUComponent | MotherboardComponent | RAMComponent;
 
 export default function BrowsePage() {
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
-    const [priceRange, setPriceRange] = useState([0, 2000]);
+    const [priceRange, setPriceRange] = useState([0, 200000]);
     const [sortBy, setSortBy] = useState('featured');
     const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
 
-    const allComponents = [
-        ...graphicsCards.map(item => ({ ...item, category: 'gpu' })),
-        ...motherboards.map(item => ({ ...item, category: 'motherboard' })),
-        ...processors.map(item => ({ ...item, category: 'cpu' })),
-        ...ramModules.map(item => ({ ...item, category: 'ram' }))
+    const allComponents: ComponentWithCategory[] = [
+        ...graphicsCards.map(item => ({ ...item, category: 'gpu' as const })),
+        ...motherboards.map(item => ({ ...item, category: 'motherboard' as const })),
+        ...processors.map(item => ({ ...item, category: 'cpu' as const })),
+        ...ramModules.map(item => ({ ...item, category: 'ram' as const }))
     ];
 
     // Get unique brands
@@ -79,12 +129,12 @@ export default function BrowsePage() {
                             value={priceRange}
                             onChange={setPriceRange}
                             min={0}
-                            max={2000}
-                            step={10}
+                            max={200000}
+                            step={5000}
                         />
                         <div className="flex justify-between mt-2 text-sm">
-                            <span>${priceRange[0]}</span>
-                            <span>${priceRange[1]}</span>
+                            <span>₹{priceRange[0].toLocaleString()}</span>
+                            <span>₹{priceRange[1].toLocaleString()}</span>
                         </div>
                     </div>
 
@@ -163,7 +213,7 @@ export default function BrowsePage() {
                                         {component.company}
                                     </p>
                                     <div className="flex justify-between items-center">
-                                        <span className="font-bold">${component.price}</span>
+                                        <span className="font-bold">₹{component.price.toLocaleString()}</span>
                                         <button className="bg-black text-white dark:bg-white dark:text-black px-4 py-1 rounded-full text-sm hover:opacity-80 transition-opacity">
                                             Add to Build
                                         </button>

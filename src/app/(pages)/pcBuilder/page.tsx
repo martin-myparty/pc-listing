@@ -213,8 +213,8 @@ export default function PcBuilderScreen() {
       type: 'gpu' as ComponentType,
       image: card.image
     })),
-    ...processors.map((cpu, index) => ({
-      id: `cpu-${index + 1}`,  // Generate ID using index
+    ...processors.map(cpu => ({
+      id: cpu.id,
       name: cpu.name,
       price: cpu.price,
       company: cpu.company,

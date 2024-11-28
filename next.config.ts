@@ -23,9 +23,27 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'www.pcworld.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'www.amd.com',
         port: '',
         pathname: '/system/files/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'rukminim2.flixcart.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.cyberpowerpc.com',
+        port: '',
+        pathname: '/**',
       },
       {
         protocol: 'https',
