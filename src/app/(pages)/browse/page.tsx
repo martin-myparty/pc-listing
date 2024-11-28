@@ -76,6 +76,28 @@ type DynamicFilters = {
   };
 };
 
+// Add seller URLs type
+type SellerInfo = {
+    name: string;
+    url: string;
+};
+
+// Add seller URLs mapping
+const SELLER_URLS: Record<string, SellerInfo> = {
+    "Amazon": {
+        name: "Amazon",
+        url: "https://www.amazon.in"
+    },
+    "Flipkart": {
+        name: "Flipkart",
+        url: "https://www.flipkart.com"
+    },
+    "Newegg": {
+        name: "Newegg",
+        url: "https://www.newegg.com"
+    }
+};
+
 export default function BrowsePage() {
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
@@ -315,7 +337,7 @@ export default function BrowsePage() {
                                 onClick={() => setSortBy(prev => 
                                     prev === 'price-asc' ? 'price-desc' : 'price-asc'
                                 )}
-                                className="flex items-center gap-2 px-4 py-2 rounded-lg border hover:bg-gray-50"
+                                className="flex items-center gap-2 px-4 py-2 rounded-lg border hover:bg-gray-50 hover:text-blue-400 transition-colors"
                             >
                                 <ArrowUpDown className="w-4 h-4" />
                                 <span>Sort by price</span>
@@ -392,7 +414,15 @@ export default function BrowsePage() {
                                                         <span className="ml-1">{component.rating}</span>
                                                     </div>
                                                     <span className="text-gray-500">({component.reviews} reviews)</span>
-                                                    <span className="text-gray-500">• {component.seller}</span>
+                                                    <span className="text-gray-500">•</span>
+                                                    <a 
+                                                        href={SELLER_URLS[component.seller].url}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="text-blue-400 hover:text-blue-500 transition-colors"
+                                                    >
+                                                        Buy on {SELLER_URLS[component.seller].name}
+                                                    </a>
                                                 </div>
                                                 <button className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                                                     Add to Build
