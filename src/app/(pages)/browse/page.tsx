@@ -6,9 +6,10 @@ import { motherboards } from '../../../../data/PC.MOTHERBOARDS';
 import { processors } from '../../../../data/PC.PROCESSORS';
 import { ramModules } from '../../../../data/PC.RAM';
 import { Slider } from '@/app/components/Slider';
-import { Star, ArrowUpDown, Cpu, MonitorPlay, CircuitBoard, HardDrive } from 'lucide-react';
+import { Star, ArrowUpDown, Cpu, MonitorPlay, CircuitBoard, HardDrive, Heart } from 'lucide-react';
 import { CustomSelect } from '@/app/components/CustomSelect';
 import Link from 'next/link';
+import { useFavorites, FavoriteComponent } from '@/store/useFavorites';
 
 // Define strict types for components
 type BaseComponent = {
@@ -233,6 +234,28 @@ export default function BrowsePage() {
         return 0;
     });
 
+    // Add favorites store hooks
+    const { addFavorite, removeFavorite, isFavorite } = useFavorites();
+
+    // Function to toggle favorite
+    const toggleFavorite = (component: MappedComponent) => {
+        const favoriteComponent: FavoriteComponent = {
+            id: component.id,
+            name: component.name,
+            price: component.price,
+            company: component.company,
+            image: component.image,
+            category: component.category,
+            type: component.category,
+        };
+
+        if (isFavorite(component.id)) {
+            removeFavorite(component.id);
+        } else {
+            addFavorite(favoriteComponent);
+        }
+    };
+
     return (
         <div className="min-h-screen bg-[#111827]">
             {/* Top Search Bar */}
@@ -424,9 +447,32 @@ export default function BrowsePage() {
                                                         Buy on {SELLER_URLS[component.seller].name}
                                                     </a>
                                                 </div>
-                                                <button className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                                                    Add to Build
-                                                </button>
+                                                <div className="flex items-center gap-2">
+                                                    <button 
+                                                        onClick={() => toggleFavorite(component)}
+                                                        className={`p-2 rounded-lg transition-colors ${
+                                                            isFavorite(component.id) 
+                                                            ? 'text-red-500 bg-red-50 dark:bg-red-900/20' 
+                                                            : 'text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20'
+                                                        }`}
+                                                    >
+                                                        <Heart 
+                                                            className={`w-5 h-5 ${
+                                                                isFavorite(component.id) ? 'fill-current' : ''
+                                                            }`} 
+                                                        />
+                                                    </button>
+                                                    <button 
+                                                        onClick={() => toggleFavorite(component)}
+                                                        className={`px-6 py-2 rounded-lg transition-colors ${
+                                                            isFavorite(component.id)
+                                                            ? 'bg-red-500 hover:bg-red-600 text-white'
+                                                            : 'bg-blue-600 hover:bg-blue-700 text-white'
+                                                        }`}
+                                                    >
+                                                        {isFavorite(component.id) ? 'Remove from Favorites' : 'Add to Favorites'}
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
