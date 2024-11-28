@@ -82,28 +82,6 @@ type DynamicFilters = {
   };
 };
 
-// Add seller URLs type
-type SellerInfo = {
-    name: string;
-    url: string;
-};
-
-// Add seller URLs mapping
-const SELLER_URLS: Record<string, SellerInfo> = {
-    "Amazon": {
-        name: "Amazon",
-        url: "https://www.amazon.in"
-    },
-    "Flipkart": {
-        name: "Flipkart",
-        url: "https://www.flipkart.com"
-    },
-    "Newegg": {
-        name: "Newegg",
-        url: "https://www.newegg.com"
-    }
-};
-
 export default function BrowsePage() {
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
@@ -362,113 +340,90 @@ export default function BrowsePage() {
                         </div>
 
                         {/* Component List */}
-                        <div className="space-y-6">
+                        <div className="space-y-4">
                             {filteredComponents.map((component) => (
                                 <div
                                     key={component.id}
-                                    className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow p-6"
+                                    className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow p-4"
                                 >
-                                    <div className="flex gap-6">
-                                        {/* Image */}
-                                        <div className="w-48 h-48 relative flex-shrink-0">
-                                            <Image
-                                                src={component.image || '/images/placeholder.jpg'}
-                                                alt={component.name}
-                                                fill
-                                                className="object-contain"
-                                            />
-                                        </div>
+                                    <div className="flex gap-4">
+                                        {/* Image and Basic Info - Clickable */}
+                                        <Link 
+                                            href={`/product-insights/${component.id}`}
+                                            className="flex gap-4 flex-1"
+                                        >
+                                            {/* Image */}
+                                            <div className="w-32 h-32 relative flex-shrink-0">
+                                                <Image
+                                                    src={component.image || '/images/placeholder.jpg'}
+                                                    alt={component.name}
+                                                    fill
+                                                    className="object-contain"
+                                                />
+                                            </div>
 
-                                        {/* Details */}
-                                        <div className="flex-1">
-                                            <div className="flex justify-between items-start">
+                                            {/* Details */}
+                                            <div className="flex-1 flex justify-between">
                                                 <div>
-                                                    <h3 className="text-xl font-medium mb-2">{component.name}</h3>
-                                                    <p className="text-gray-600 dark:text-gray-400 mb-4">
+                                                    <h3 className="text-lg font-medium text-gray-900 dark:text-white">{component.name}</h3>
+                                                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
                                                         {component.company}
                                                     </p>
-                                                </div>
-                                                <div className="text-right">
-                                                    <p className="text-2xl font-bold">₹{component.price.toLocaleString()}</p>
-                                                    <p className="text-sm text-gray-500">{component.availability}</p>
-                                                </div>
-                                            </div>
-
-                                            {/* Specifications */}
-                                            <div className="grid grid-cols-2 gap-4 mb-4">
-                                                {'vram' in component && (
-                                                    <p className="text-sm">
-                                                        <span className="text-gray-500">VRAM:</span> {component.vram}
-                                                    </p>
-                                                )}
-                                                {'cores' in component && (
-                                                    <>
-                                                        <p className="text-sm">
-                                                            <span className="text-gray-500">Cores/Threads:</span> {component.cores}/{component.threads}
-                                                        </p>
-                                                        <p className="text-sm">
-                                                            <span className="text-gray-500">Clock Speed:</span> {component.base_clock} - {component.turbo_clock}
-                                                        </p>
-                                                    </>
-                                                )}
-                                                {'capacity' in component && (
-                                                    <>
-                                                        <p className="text-sm">
-                                                            <span className="text-gray-500">Capacity:</span> {component.capacity}
-                                                        </p>
-                                                        <p className="text-sm">
-                                                            <span className="text-gray-500">Speed:</span> {component.speed}
-                                                        </p>
-                                                    </>
-                                                )}
-                                            </div>
-
-                                            {/* Rating and Reviews */}
-                                            <div className="flex items-center justify-between">
-                                                <div className="flex items-center gap-2">
-                                                    <div className="flex items-center">
-                                                        <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                                                        <span className="ml-1">{component.rating}</span>
+                                                    
+                                                    {/* Quick Specs */}
+                                                    <div className="space-y-1">
+                                                        {'vram' in component && (
+                                                            <p className="text-sm text-gray-600 dark:text-gray-400">
+                                                                <span className="text-gray-500">VRAM:</span> {component.vram}
+                                                            </p>
+                                                        )}
+                                                        {'cores' in component && (
+                                                            <p className="text-sm text-gray-600 dark:text-gray-400">
+                                                                <span className="text-gray-500">Cores/Threads:</span> {component.cores}/{component.threads}
+                                                            </p>
+                                                        )}
+                                                        {'capacity' in component && (
+                                                            <p className="text-sm text-gray-600 dark:text-gray-400">
+                                                                <span className="text-gray-500">Capacity:</span> {component.capacity}
+                                                            </p>
+                                                        )}
                                                     </div>
-                                                    <span className="text-gray-500">({component.reviews} reviews)</span>
-                                                    <span className="text-gray-500">•</span>
-                                                    <a 
-                                                        href={SELLER_URLS[component.seller].url}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="text-blue-400 hover:text-blue-500 transition-colors"
-                                                    >
-                                                        Buy on {SELLER_URLS[component.seller].name}
-                                                    </a>
                                                 </div>
-                                                <div className="flex items-center gap-2">
-                                                    <button 
-                                                        onClick={() => toggleFavorite(component)}
-                                                        className={`p-2 rounded-lg transition-colors ${
-                                                            isComponentFavorite(component.id) 
-                                                            ? 'text-red-500 bg-red-50 dark:bg-red-900/20' 
-                                                            : 'text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20'
-                                                        }`}
-                                                    >
-                                                        <Heart 
-                                                            className={`w-5 h-5 ${
-                                                                isComponentFavorite(component.id) ? 'fill-current' : ''
-                                                            }`} 
-                                                        />
-                                                    </button>
-                                                    <button 
-                                                        onClick={() => toggleFavorite(component)}
-                                                        className={`px-6 py-2 rounded-lg transition-colors ${
-                                                            isComponentFavorite(component.id)
-                                                            ? 'bg-red-500 hover:bg-red-600 text-white'
-                                                            : 'bg-blue-600 hover:bg-blue-700 text-white'
-                                                        }`}
-                                                    >
-                                                        {isComponentFavorite(component.id) ? 'Remove from Favorites' : 'Add to Favorites'}
-                                                    </button>
+
+                                                <div className="flex flex-col items-end justify-between">
+                                                    <div className="flex items-center gap-4">
+                                                        <div className="text-right">
+                                                            <p className="text-xl font-bold text-gray-900 dark:text-white">₹{component.price.toLocaleString()}</p>
+                                                            <p className="text-sm text-gray-500">{component.availability}</p>
+                                                        </div>
+                                                        <button 
+                                                            onClick={(e) => {
+                                                                e.preventDefault();
+                                                                toggleFavorite(component);
+                                                            }}
+                                                            className={`p-2 rounded-lg transition-colors ${
+                                                                isComponentFavorite(component.id) 
+                                                                    ? 'text-red-500 bg-red-50 dark:bg-red-900/20' 
+                                                                    : 'text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20'
+                                                            }`}
+                                                        >
+                                                            <Heart 
+                                                                className={`w-5 h-5 ${
+                                                                    isComponentFavorite(component.id) ? 'fill-current' : ''
+                                                                }`} 
+                                                            />
+                                                        </button>
+                                                    </div>
+
+                                                    <div className="flex items-center gap-2 text-sm text-gray-500">
+                                                        <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                                                        <span>{component.rating}</span>
+                                                        <span>•</span>
+                                                        <span>{component.reviews} reviews</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </Link>
                                     </div>
                                 </div>
                             ))}
