@@ -1,37 +1,37 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-export type FavoriteComponent = {
+type ComponentType = 'gpu' | 'cpu' | 'motherboard' | 'ram';
+type PCComponent = {
   id: string;
   name: string;
   price: number;
   company: string;
-  image: string;
-  category: string;
-  type: 'gpu' | 'cpu' | 'motherboard' | 'ram';
+  type: ComponentType;
+  image?: string;
 };
 
 interface FavoritesStore {
-  favorites: FavoriteComponent[];
-  addFavorite: (component: FavoriteComponent) => void;
-  removeFavorite: (componentId: string) => void;
-  isFavorite: (componentId: string) => boolean;
+  favorites: PCComponent[];
+  toggleFavorite: (component: PCComponent) => void;
 }
 
 export const useFavorites = create<FavoritesStore>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       favorites: [],
-      addFavorite: (component) => 
-        set((state) => ({
-          favorites: [...state.favorites, component]
-        })),
-      removeFavorite: (componentId) =>
-        set((state) => ({
-          favorites: state.favorites.filter((item) => item.id !== componentId)
-        })),
-      isFavorite: (componentId) =>
-        get().favorites.some((item) => item.id === componentId),
+      toggleFavorite: (component) =>
+        set((state) => {
+          const exists = state.favorites.find((c) => c.id === component.id);
+          if (exists) {
+            return {
+              favorites: state.favorites.filter((c) => c.id !== component.id),
+            };
+          }
+          return {
+            favorites: [...state.favorites, component],
+          };
+        }),
     }),
     {
       name: 'favorites-storage',

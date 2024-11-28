@@ -9,7 +9,10 @@ import { Slider } from '@/app/components/Slider';
 import { Star, ArrowUpDown, Cpu, MonitorPlay, CircuitBoard, HardDrive, Heart } from 'lucide-react';
 import { CustomSelect } from '@/app/components/CustomSelect';
 import Link from 'next/link';
-import { useFavorites, FavoriteComponent } from '@/store/useFavorites';
+import { useFavorites } from '@/store/useFavorites';
+
+// Add this type definition near the top with other types
+type ComponentType = 'gpu' | 'cpu' | 'motherboard' | 'ram';
 
 // Define strict types for components
 type BaseComponent = {
@@ -23,6 +26,7 @@ type BaseComponent = {
   reviews: number;
   seller: string;
   availability: string;
+  type: ComponentType;
 };
 
 type GPUComponent = BaseComponent & {
@@ -61,6 +65,7 @@ type MappedComponent = (GPUComponent | CPUComponent | RAMComponent | Motherboard
   reviews: number;
   seller: string;
   availability: string;
+  type: ComponentType;
 };
 
 // Types for dynamic filters
@@ -120,12 +125,12 @@ export default function BrowsePage() {
         const gpuComponents: MappedComponent[] = graphicsCards.map(item => ({
             ...item,
             category: 'gpu' as const,
+            type: 'gpu',
             rating: 4.5,
             reviews: 128,
             seller: "Amazon",
             availability: "In Stock",
             image: item.image || '/images/placeholder.jpg',
-            // Ensure brand and model are always defined
             brand: item.brand || item.company,
             model: item.model || 'Standard'
         }));
@@ -133,6 +138,7 @@ export default function BrowsePage() {
         const cpuComponents: MappedComponent[] = processors.map(item => ({
             ...item,
             category: 'cpu' as const,
+            type: 'cpu',
             rating: 4.3,
             reviews: 95,
             seller: "Newegg",
@@ -143,6 +149,7 @@ export default function BrowsePage() {
         const mbComponents: MappedComponent[] = motherboards.map(item => ({
             ...item,
             category: 'motherboard' as const,
+            type: 'motherboard',
             rating: 4.2,
             reviews: 76,
             seller: "Amazon",
@@ -153,6 +160,7 @@ export default function BrowsePage() {
         const ramComponents: MappedComponent[] = ramModules.map(item => ({
             ...item,
             category: 'ram' as const,
+            type: 'ram',
             rating: 4.4,
             reviews: 112,
             seller: "Newegg",
@@ -235,25 +243,11 @@ export default function BrowsePage() {
     });
 
     // Add favorites store hooks
-    const { addFavorite, removeFavorite, isFavorite } = useFavorites();
+    const { toggleFavorite, favorites } = useFavorites();
 
-    // Function to toggle favorite
-    const toggleFavorite = (component: MappedComponent) => {
-        const favoriteComponent: FavoriteComponent = {
-            id: component.id,
-            name: component.name,
-            price: component.price,
-            company: component.company,
-            image: component.image,
-            category: component.category,
-            type: component.category,
-        };
-
-        if (isFavorite(component.id)) {
-            removeFavorite(component.id);
-        } else {
-            addFavorite(favoriteComponent);
-        }
+    // Add a helper function to check if a component is favorite
+    const isComponentFavorite = (componentId: string) => {
+        return favorites.some(fav => fav.id === componentId);
     };
 
     return (
@@ -451,26 +445,26 @@ export default function BrowsePage() {
                                                     <button 
                                                         onClick={() => toggleFavorite(component)}
                                                         className={`p-2 rounded-lg transition-colors ${
-                                                            isFavorite(component.id) 
+                                                            isComponentFavorite(component.id) 
                                                             ? 'text-red-500 bg-red-50 dark:bg-red-900/20' 
                                                             : 'text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20'
                                                         }`}
                                                     >
                                                         <Heart 
                                                             className={`w-5 h-5 ${
-                                                                isFavorite(component.id) ? 'fill-current' : ''
+                                                                isComponentFavorite(component.id) ? 'fill-current' : ''
                                                             }`} 
                                                         />
                                                     </button>
                                                     <button 
                                                         onClick={() => toggleFavorite(component)}
                                                         className={`px-6 py-2 rounded-lg transition-colors ${
-                                                            isFavorite(component.id)
+                                                            isComponentFavorite(component.id)
                                                             ? 'bg-red-500 hover:bg-red-600 text-white'
                                                             : 'bg-blue-600 hover:bg-blue-700 text-white'
                                                         }`}
                                                     >
-                                                        {isFavorite(component.id) ? 'Remove from Favorites' : 'Add to Favorites'}
+                                                        {isComponentFavorite(component.id) ? 'Remove from Favorites' : 'Add to Favorites'}
                                                     </button>
                                                 </div>
                                             </div>

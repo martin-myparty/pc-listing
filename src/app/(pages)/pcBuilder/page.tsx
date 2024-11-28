@@ -8,6 +8,7 @@ import { ramModules } from '../../../../data/PC.RAM';
 import Image from 'next/image';
 import { FiEdit2, FiHeart, FiPlus, FiX, FiChevronDown, FiChevronRight, FiMonitor, FiPlay, FiCpu, FiCode, FiFilm, FiLock, FiUnlock, FiMaximize2 } from 'react-icons/fi';
 import { useDialog } from '@/app/components/GlobalDialog';
+import { useFavorites } from '@/store/useFavorites';
 
 // Define types for our components
 type ComponentType = 'gpu' | 'cpu' | 'motherboard' | 'ram';
@@ -241,7 +242,8 @@ export default function PcBuilderScreen() {
 
   const [builds, setBuilds] = useState<PCBuild[]>([]);
 
-  const [favoriteComponents, setFavoriteComponents] = useState<PCComponent[]>([]);
+  const { favorites, toggleFavorite } = useFavorites();
+
   const [editingBuildId, setEditingBuildId] = useState<string | null>(null);
   const [editingBuildName, setEditingBuildName] = useState('');
 
@@ -364,16 +366,6 @@ export default function PcBuilderScreen() {
         message: `${COMPONENT_DISPLAY_NAMES[component.type]} "${component.name}" has been added to ${build.name}`
       });
     }
-  };
-
-  const toggleFavorite = (component: PCComponent) => {
-    setFavoriteComponents(prev => {
-      const exists = prev.find(c => c.id === component.id);
-      if (exists) {
-        return prev.filter(c => c.id !== component.id);
-      }
-      return [...prev, component];
-    });
   };
 
   const addNewBuild = () => {
@@ -900,7 +892,7 @@ export default function PcBuilderScreen() {
                                         <button
                                           onClick={() => toggleFavorite(component)}
                                           className={`absolute right-2 top-2 p-1 rounded-full 
-                                            ${favoriteComponents.some(c => c.id === component.id)
+                                            ${favorites.some(c => c.id === component.id)
                                               ? 'text-red-500'
                                               : 'text-gray-400 opacity-0 group-hover:opacity-100'
                                             }`}
@@ -957,7 +949,7 @@ export default function PcBuilderScreen() {
                       ref={provided.innerRef}
                       className="space-y-2"
                     >
-                      {favoriteComponents.map((component, index) => (
+                      {favorites.map((component, index) => (
                         <Draggable
                           key={component.id}
                           draggableId={`fav-${component.id}`}
